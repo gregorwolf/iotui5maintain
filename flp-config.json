@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "iotui5maintainv3",
+        "description": "Maintain Sensors",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#iotui5maintainv3-Display",
+        "navigationComponentName": "de.computerservice-wolf.iotui5.maintain",
+        "intentSemanticObject": "iotui5maintainv3",
+        "intentAction": "Display",
+        "html5ApplicationName": "iotui5maintainv3",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "10e13205-7c84-442e-b6a7-83b8caeb9cfd-1425978472254"
+        ],
+        "contentPackages": [
+            "db4ebaa7-4ba8-4c0b-8171-cb709884fd8a-1425978572688"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Maintain Sensors",
+        "subtitle": "IoT",
+        "searchKeywords": "Maintain Sensors,IoT",
+        "displayIconUrl": "sap-icon://temperature",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

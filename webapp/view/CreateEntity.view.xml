@@ -1,0 +1,42 @@
+<mvc:View controllerName="de.computerservice-wolf.iotui5.maintain.controller.CreateEntity" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic" xmlns:smart="sap.ui.comp.smartfield" xmlns="sap.m">
+	<semantic:DetailPage id="page" navButtonPress="onNavBack" title="{viewModel>/viewTitle}" busy="{viewModel>/busy}">
+		<semantic:content>
+			<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="4" emptySpanM="4" id="newEntitySimpleForm"
+				labelSpanL="3" labelSpanM="3" layout="ResponsiveGridLayout" maxContainerCols="2" minWidth="1024"
+				title="{= ${viewModel>/mode} === 'edit'? 'Edit s0001142741trial.xsdemo.hello.odata.iotscenario.sensorsType': 'New s0001142741trial.xsdemo.hello.odata.iotscenario.sensorsType'}">
+				<f:content>
+					<Label text="id" required="true"/>
+					<Input name="id" id="id_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement"
+						enabled="{= ${viewModel>/mode} === 'edit'? false: true}" visible="true"
+						value="{ path: 'id', type: 'sap.ui.model.odata.type.String' , constraints:{ nullable:false } }"/>
+					<Label text="device" required="true"/>
+					<Input name="device" id="device_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'device', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:50, nullable:false } }"/>
+					<Label text="type" required="true"/>
+					<Input name="type" id="type_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'type', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:50, nullable:false } }"/>
+					<Label text="lastMeasurement" required="false"/>
+					<Input name="lastMeasurement" id="lastMeasurement_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true"
+						visible="true" value="{ path: 'lastMeasurement', type: 'sap.ui.model.odata.type.String' }"/>
+					<Label text="description" required="false"/>
+					<Input name="description" id="description_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'description', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:250 } }"/>
+					<Label text="userName" required="false"/>
+					<Input name="userName" id="userName_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'userName', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:256 } }"/>
+					<Label text="inactive" required="false"/>
+					<Input name="inactive" id="inactive_id" valueLiveUpdate="true" liveChange="_validateSaveEnablement" enabled="true" visible="true"
+						value="{ path: 'inactive', type: 'sap.ui.model.odata.type.String' , constraints:{ maxLength:1 } }"/>
+				</f:content>
+			</f:SimpleForm>
+		</semantic:content>
+		<semantic:saveAction>
+			<semantic:SaveAction id="save" enabled="{viewModel>/enableCreate}" press="onSave"/>
+		</semantic:saveAction>
+		<semantic:cancelAction>
+			<semantic:CancelAction id="cancel" press="onCancel"></semantic:CancelAction>
+		</semantic:cancelAction>
+	</semantic:DetailPage>
+</mvc:View>
