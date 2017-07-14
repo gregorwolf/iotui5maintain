@@ -9,9 +9,9 @@ sap.ui.define([
 		sUrlParameters = sUrlParameters ? "?" + sUrlParameters : "";
 
 		if (sHash) {
-			sHash = "#MaintainSensors-display&/" + (sHash.indexOf("/") === 0 ? sHash.substring(1) : sHash);
+			sHash = "#IoTSensor-display&/" + (sHash.indexOf("/") === 0 ? sHash.substring(1) : sHash);
 		} else {
-			sHash = "#MaintainSensors-display";
+			sHash = "#IoTSensor-display";
 		}
 
 		return sUrl + sUrlParameters + sHash;

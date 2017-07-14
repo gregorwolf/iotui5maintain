@@ -12,7 +12,7 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": false,
+    "buildRequired": true,
     "lastBuildDateTime": "Fri, 14 Jul 2017 16:37:00 GMT"
   },
   "generation": [
