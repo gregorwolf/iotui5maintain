@@ -123,6 +123,12 @@
 				"pattern": "sensors/{id}",
 				"name": "object",
 				"target": ["master", "object"]
+			}, {
+				"name": "create",
+				"pattern": "create",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["master", "create"]
 			}],
 			"targets": {
 				"master": {
