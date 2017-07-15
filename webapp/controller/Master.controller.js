@@ -62,18 +62,6 @@ sap.ui.define([
 			this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
 			this.getRouter().attachBypassed(this.onBypassed, this);
 			this._oODataModel = this.getOwnerComponent().getModel();
-			
-			var oURLParsingService = sap.ushell.Container.getService("URLParsing");
-			var url = window.location.href;
-			if(oURLParsingService.isIntentUrl(url)) {
-				var sShellHash = oURLParsingService.getShellHash(url);
-				var oParsedShellHash = oURLParsingService.parseShellHash(sShellHash);
-				jQuery.sap.log.info("Hash for the application: " + oParsedShellHash.semanticObject);
-				if(oParsedShellHash.action === "create") {
-					// this.onAdd();
-					this.getRouter().getTargets().display("create");
-				}
-			}
 		},
 
 		/* =========================================================== */
@@ -94,6 +82,7 @@ sap.ui.define([
 			this.byId("pullToRefresh").hide();
 			this._findItem();
 			this.getModel("appView").setProperty("/addEnabled", true);
+			this._handleActionCreate();
 		},
 
 		/**
@@ -290,6 +279,24 @@ sap.ui.define([
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
+		
+		/**
+		 * Checks if the semanticObject action is create and navigate to 
+		 * the create view
+		 * @private
+		 */		
+		_handleActionCreate: function() {
+			var oURLParsingService = sap.ushell.Container.getService("URLParsing");
+			var url = window.location.href;
+			if(oURLParsingService.isIntentUrl(url)) {
+				var sShellHash = oURLParsingService.getShellHash(url);
+				var oParsedShellHash = oURLParsingService.parseShellHash(sShellHash);
+				jQuery.sap.log.info("Hash for the application: " + oParsedShellHash.semanticObject);
+				if(oParsedShellHash.action === "create") {
+					this.onAdd();
+				}
+			}
+		},
 
 		/**
 		 * Creates the model for the view
