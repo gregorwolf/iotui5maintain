@@ -15,6 +15,24 @@ sap.ui.define([], function() {
 			}
 
 			return parseFloat(sValue).toFixed(2);
+		},
+		
+		inactiveStatus :  function (sStatus) {
+			if (sStatus === "0") {
+				return "Success";
+			} else if (sStatus === "1"){
+				return "Error";
+			} else {
+				return "None";
+			}
+		},
+		
+		inactiveText :  function (sStatus) {
+			if (sStatus === "0") {
+				return "Active";
+			} else if (sStatus === "1"){
+				return "Inactive";
+			}
 		}
 	};
 
