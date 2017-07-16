@@ -16,7 +16,8 @@
 				items="{ 
 					path: '/sensors', 
 					sorter: { path: 'device', descending: false },
-					groupHeaderFactory: '.createGroupHeader' 
+					groupHeaderFactory: '.createGroupHeader',
+					parameters: {operationMode: 'Client'}
 				}"
 				busyIndicatorDelay="{masterView>/delay}" 
 				noDataText="{masterView>/noDataText}"
