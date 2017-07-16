@@ -303,7 +303,9 @@ sap.ui.define([
 				this.urlParameters.action = oParsedShellHash.action;
 			}
 			var oParameters = oURLParsingService.parseParameters(window.location.search);
-			this.urlParameters.inactive = oParameters.inactive[0];
+			if(oParameters.inactive !== undefined) {
+				this.urlParameters.inactive = oParameters.inactive[0];
+			}
 		},
 		
 		/**

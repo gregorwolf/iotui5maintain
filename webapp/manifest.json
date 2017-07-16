@@ -29,17 +29,21 @@
 				"intent1": {
 					"signature": {
 						"parameters": {
-							"inactive": {}
+							"inactive": {
+								"defaultValue": {
+									"value": "0"
+								}
+							}
 						},
-						"additionalParameters": "allowed"
+						"additionalParameters": "notallowed"
 					},
 					"semanticObject": "IoTSensor",
 					"action": "display",
-					"title": "Sensors",
+					"title": "Active Sensors",
 					"icon": "sap-icon://temperature",
 					"indicatorDataSource": {
 						"dataSource": "mainService",
-						"path": "sensors",
+						"path": "/HANAMDC/s0001142741trial/xsdemo/hello/odata/iotscenario.xsodata/sensors/$count?$filter=inactive eq '0'",
 						"refresh": 120
 					}
 				},
@@ -52,6 +56,37 @@
 					"action": "create",
 					"title": "Create Sensor",
 					"icon": "sap-icon://create"
+				},
+				"intent3": {
+					"signature": {
+						"parameters": {
+							"name1": {
+								"defaultValue": {
+									"value": "",
+									"format": "plain"
+								},
+								"filter": {
+									"value": "",
+									"format": "plain"
+								}
+							},
+							"inactive": {
+								"defaultValue": {
+									"value": "1"
+								}
+							}
+						},
+						"additionalParameters": "notallowed"
+					},
+					"semanticObject": "IoTSensor",
+					"action": "display",
+					"title": "Inactive Sensor",
+					"icon": "sap-icon://temperature",
+					"indicatorDataSource": {
+						"dataSource": "mainService",
+						"path": "/HANAMDC/s0001142741trial/xsdemo/hello/odata/iotscenario.xsodata/sensors/$count?$filter=inactive eq '1'",
+						"refresh": 120
+					}
 				}
 			}
 		}
@@ -72,10 +107,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_bluecrystal"
-		]
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
@@ -121,41 +153,25 @@
 				"controlId": "idAppControl",
 				"controlAggregation": "detailPages",
 				"bypassed": {
-					"target": [
-						"master",
-						"notFound"
-					]
+					"target": ["master", "notFound"]
 				},
 				"async": "true"
 			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "master",
-					"target": [
-						"object",
-						"master"
-					]
-				},
-				{
-					"pattern": "sensors/{id}",
-					"name": "object",
-					"target": [
-						"master",
-						"object"
-					]
-				},
-				{
-					"name": "create",
-					"pattern": "create",
-					"titleTarget": "",
-					"greedy": false,
-					"target": [
-						"master",
-						"create"
-					]
-				}
-			],
+			"routes": [{
+				"pattern": "",
+				"name": "master",
+				"target": ["object", "master"]
+			}, {
+				"pattern": "sensors/{id}",
+				"name": "object",
+				"target": ["master", "object"]
+			}, {
+				"name": "create",
+				"pattern": "create",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["master", "create"]
+			}],
 			"targets": {
 				"master": {
 					"viewName": "Master",
