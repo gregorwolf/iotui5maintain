@@ -12,8 +12,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true,
-    "lastBuildDateTime": "Sun, 16 Jul 2017 12:08:35 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Sun, 16 Jul 2017 15:18:48 GMT"
   },
   "generation": [
     {
@@ -54,6 +54,6 @@
   "hcpdeploy": {
     "account": "s0001142741trial",
     "name": "iotui5maintainv3",
-    "lastVersionWeTriedToDeploy": "0.0.11"
+    "lastVersionWeTriedToDeploy": "0.0.14"
   }
 }

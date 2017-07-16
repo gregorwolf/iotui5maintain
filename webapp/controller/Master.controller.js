@@ -311,6 +311,7 @@ sap.ui.define([
 			if(oParameters.inactive !== undefined) {
 				this.urlParameters.inactive = oParameters.inactive[0];
 			}
+			this.urlParameters.inactive = this.urlParameters.inactive.replace(/'/g, "");
 		},
 		
 		/**
