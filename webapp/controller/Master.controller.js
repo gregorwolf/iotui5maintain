@@ -17,6 +17,10 @@ sap.ui.define([
 	return BaseController.extend("de.computerservice-wolf.iotui5.maintain.controller.Master", {
 
 		formatter: formatter,
+		urlParameters: {
+			action: false,
+			inactive: false
+		},
 
 		/* =========================================================== */
 		/* lifecycle methods                                           */
@@ -36,6 +40,8 @@ sap.ui.define([
 				iOriginalBusyDelay = oList.getBusyIndicatorDelay();
 			this._oListSelector = this.getOwnerComponent().oListSelector;
 			this._oGroupSortState = new GroupSortState(oViewModel, grouper.lastMeasurement(this.getResourceBundle()));
+
+			this._fillUrlParmeters();
 
 			this._oList = oList;
 			// keeps the filter and search state
@@ -82,6 +88,15 @@ sap.ui.define([
 			this.byId("pullToRefresh").hide();
 			this._findItem();
 			this.getModel("appView").setProperty("/addEnabled", true);
+			
+			if(this.urlParameters.inactive) {
+				this._oListFilterState.aFilter.push(
+					new Filter("inactive", FilterOperator.EQ, this.urlParameters.inactive)
+				);
+				this._applyFilterSearch();
+				this.urlParameters.inactive = false;
+			}
+
 			this._handleActionCreate();
 		},
 
@@ -272,6 +287,24 @@ sap.ui.define([
 		/* =========================================================== */
 		/* begin: internal methods                                     */
 		/* =========================================================== */
+
+		/**
+		 * Checks if the semanticObject action is create and navigate to 
+		 * the create view
+		 * @private
+		 */		
+		_fillUrlParmeters: function() {
+			var oURLParsingService = sap.ushell.Container.getService("URLParsing");
+			var url = window.location.href;
+			if(oURLParsingService.isIntentUrl(url)) {
+				var sShellHash = oURLParsingService.getShellHash(url);
+				var oParsedShellHash = oURLParsingService.parseShellHash(sShellHash);
+				jQuery.sap.log.info("Hash for the application: " + oParsedShellHash.semanticObject);
+				this.urlParameters.action = oParsedShellHash.action;
+			}
+			var oParameters = oURLParsingService.parseParameters(window.location.search);
+			this.urlParameters.inactive = oParameters.inactive[0];
+		},
 		
 		/**
 		 * Checks if the semanticObject action is create and navigate to 
@@ -279,15 +312,8 @@ sap.ui.define([
 		 * @private
 		 */		
 		_handleActionCreate: function() {
-			var oURLParsingService = sap.ushell.Container.getService("URLParsing");
-			var url = window.location.href;
-			if(oURLParsingService.isIntentUrl(url)) {
-				var sShellHash = oURLParsingService.getShellHash(url);
-				var oParsedShellHash = oURLParsingService.parseShellHash(sShellHash);
-				jQuery.sap.log.info("Hash for the application: " + oParsedShellHash.semanticObject);
-				if(oParsedShellHash.action === "create") {
-					this.onAdd();
-				}
+			if(this.urlParameters.action === "create") {
+				this.onAdd();
 			}
 		},
 
