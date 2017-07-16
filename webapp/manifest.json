@@ -97,7 +97,10 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
 	},
 	"sap.ui5": {
 		"_version": "1.1.0",
@@ -143,25 +146,41 @@
 				"controlId": "idAppControl",
 				"controlAggregation": "detailPages",
 				"bypassed": {
-					"target": ["master", "notFound"]
+					"target": [
+						"master",
+						"notFound"
+					]
 				},
 				"async": "true"
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "master",
-				"target": ["object", "master"]
-			}, {
-				"pattern": "sensors/{id}",
-				"name": "object",
-				"target": ["master", "object"]
-			}, {
-				"name": "create",
-				"pattern": "create",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["master", "create"]
-			}],
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"object",
+						"master"
+					]
+				},
+				{
+					"pattern": "sensors/{id}",
+					"name": "object",
+					"target": [
+						"master",
+						"object"
+					]
+				},
+				{
+					"name": "create",
+					"pattern": "create",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"master",
+						"create"
+					]
+				}
+			],
 			"targets": {
 				"master": {
 					"viewName": "Master",

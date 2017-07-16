@@ -299,6 +299,11 @@ sap.ui.define([
 			if(oURLParsingService.isIntentUrl(url)) {
 				var sShellHash = oURLParsingService.getShellHash(url);
 				var oParsedShellHash = oURLParsingService.parseShellHash(sShellHash);
+				// In the SAP Cloud Portal the Parameter is passed not before but after the Hash
+				// #IoTSensor-display?inactive=0
+				if(oParsedShellHash.params.inactive !== undefined) {
+					this.urlParameters.inactive = oParsedShellHash.params.inactive[0];
+				}
 				jQuery.sap.log.info("Hash for the application: " + oParsedShellHash.semanticObject);
 				this.urlParameters.action = oParsedShellHash.action;
 			}
