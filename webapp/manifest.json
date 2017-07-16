@@ -60,16 +60,6 @@
 				"intent3": {
 					"signature": {
 						"parameters": {
-							"name1": {
-								"defaultValue": {
-									"value": "",
-									"format": "plain"
-								},
-								"filter": {
-									"value": "",
-									"format": "plain"
-								}
-							},
 							"inactive": {
 								"defaultValue": {
 									"value": "1"
@@ -79,8 +69,8 @@
 						"additionalParameters": "notallowed"
 					},
 					"semanticObject": "IoTSensor",
-					"action": "display",
-					"title": "Inactive Sensor",
+					"action": "displayinactive",
+					"title": "Inactive Sensors",
 					"icon": "sap-icon://temperature",
 					"indicatorDataSource": {
 						"dataSource": "mainService",
