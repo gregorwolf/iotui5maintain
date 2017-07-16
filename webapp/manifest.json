@@ -36,7 +36,12 @@
 					"semanticObject": "IoTSensor",
 					"action": "display",
 					"title": "Sensors",
-					"icon": "sap-icon://temperature"
+					"icon": "sap-icon://temperature",
+					"indicatorDataSource": {
+						"dataSource": "mainService",
+						"path": "sensors",
+						"refresh": 120
+					}
 				},
 				"intent2": {
 					"signature": {
