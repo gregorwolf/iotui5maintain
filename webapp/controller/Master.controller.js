@@ -181,15 +181,8 @@ sap.ui.define([
 			// update filter state:
 			// combine the filter array and the filter string
 			aFilterItems.forEach(function(oItem) {
-				switch (oItem.getKey()) {
-					case "Filter1":
-						aFilters.push(new Filter("lastMeasurement", FilterOperator.LE, 100));
-						break;
-					case "Filter2":
-						aFilters.push(new Filter("lastMeasurement", FilterOperator.GT, 100));
-						break;
-					default:
-						break;
+				if ( oItem.getKey() ) {
+					aFilters.push(new Filter("inactive", FilterOperator.EQ, oItem.getKey()));
 				}
 				aCaptions.push(oItem.getText());
 			});
