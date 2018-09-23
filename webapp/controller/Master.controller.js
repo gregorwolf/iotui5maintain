@@ -40,8 +40,11 @@ sap.ui.define([
 				iOriginalBusyDelay = oList.getBusyIndicatorDelay();
 			this._oListSelector = this.getOwnerComponent().oListSelector;
 			this._oGroupSortState = new GroupSortState(oViewModel, grouper.lastMeasurement(this.getResourceBundle()));
-
-			this._fillUrlParmeters();
+			
+			if(sap.ushell.Container) {
+				this._fillUrlParmeters();
+			}
+			
 
 			this._oList = oList;
 			// keeps the filter and search state
